@@ -6,8 +6,7 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-        run: |
-          gh api --method PUT repos/$OWNER/$REPO/branches/main/protection --input ./config-branch-rules  >/dev/null
+      - run: gh api --method PUT repos/$OWNER/$REPO/branches/main/protection --input ./config-branch-rules
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.event.repository.repo }}
