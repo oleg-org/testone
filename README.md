@@ -1,4 +1,4 @@
-Set up actions:
+GitHub set up actions:
 - Create Organization
 - set up authentication (MFA)
 - create an Organization level webhook to send payload to a GitHub App upon "repositories" event
