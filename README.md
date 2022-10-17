@@ -8,7 +8,7 @@ Web Server or Web Service
 - create a web server to listen on a specific URL (above) and process incoming HTTP POST (event)
   - Could use AWS Lambda or AWS API Gateway as well
 
-Event handler logic:
+Event handler logic (based upon Zack Koppert(GitHub) Auto-branch-protect):
 - If the HTTP Post is valid (has JSON), process its payload
 - make sure the access token exported as an environment variable
   - If "repository created" event found
