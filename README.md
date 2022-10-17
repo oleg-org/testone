@@ -1,13 +1,14 @@
-# New Branch Protection and Notification
+# GitHun automation - New repository Branch Protection and Notification
 
 ## GitHub set up actions:
 - Create Organization
-- set up authentication (MFA)
+- set up authentication (MFA) - not required but useful
 - create access token
-- create an Organization level webhook to send payload to an external URL upon "repositories" event
+- create an Organization level webhook to send payload to an external URL upon "repositories" event fired
 
 ## Web Server or Web Service
 - create a web server to listen on a specific URL (above) and process incoming HTTP POST (event)
+  - ngrok, node.js, npm; sinatra, etc...
   - Could use AWS Lambda or AWS API Gateway as well
 
 ## Event handler logic (based upon Zack Koppert(GitHub) Auto-branch-protect):
@@ -16,4 +17,4 @@
   - If "repository created" event found
     - update protection rules on the "main" branch
     - create new issue assigned to the user id that created the repositiry
-    - in the issue decription, mention the repo creator, following @mention notation
+    - in the issue decription, mention the repo creator, follow @mention notation
