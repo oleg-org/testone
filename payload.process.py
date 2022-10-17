@@ -31,7 +31,7 @@ def webhook():
             session = requests.session()
             session.auth = (user, cred)
             response_1 = session.put(
-                payload["repository"]["url"] + "/branches/main/protection",
+                payload["repository"]["url"] + "/branches/master/protection",
                 json.dumps(branch_protection),
             )
             if response_1.status_code == 200:
@@ -42,8 +42,8 @@ def webhook():
 
                 # Create issue in repo notifying user of branch protection
                 try:
-                    owner = payload["repository"]["owner"] # not used, probably the same as sender
-                    sender = payload["sender"]
+                    owner = payload["repository"]["owner"]["login"] # not used, probably the same as sender
+                    sender = payload["sender"]["login"]
                     if payload["repository"]["has_issues"]:
                         issue = {
                             "title": "New Protection Added",
