@@ -1,4 +1,4 @@
-# GitHun automation - New repository Branch Protection and Notification
+# GitHub automation - New repository Branch Protection and Notification
 
 ## GitHub set up actions:
 - Create Organization
