@@ -6,7 +6,7 @@ import time  # pylint: disable=import-error
 
 import requests  # pylint: disable=import-error
 
-request = "Get Payload"
+request = http.request.body # placeholeder - "Get Payload". TODO
 
 def webhook():
     # Store incoming json data from webhook
@@ -31,7 +31,7 @@ def webhook():
             session = requests.session()
             session.auth = (user, cred)
             response_1 = session.put(
-                payload["repository"]["url"] + "/branches/master/protection",
+                payload["repository"]["url"] + "/branches/main/protection",
                 json.dumps(branch_protection),
             )
             if response_1.status_code == 200:
@@ -42,12 +42,16 @@ def webhook():
 
                 # Create issue in repo notifying user of branch protection
                 try:
+                    owner = payload["repository"]["owner"] # not used, probably the same as sender
+                    sender = payload["sender"]
                     if payload["repository"]["has_issues"]:
                         issue = {
                             "title": "New Protection Added",
                             "body": "@"
                             + user
-                            + " A new branch protection was added to the master branch.",
+                            + " A new branch protection was added by @"
+                            + sender
+                            + " to the master branch.",
                         }
                         session = requests.session()
                         session.auth = (user, cred)
